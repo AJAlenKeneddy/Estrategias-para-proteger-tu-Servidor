@@ -1,0 +1,454 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategia de Ciberseguridad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .threats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+            gap: 20px; /* Espacio entre las tarjetas de amenaza */
+            margin-bottom: 40px;
+        }
+
+        .threat {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+            .threat:hover {
+                transform: scale(1.05);
+            }
+
+        h2 {
+            color: #333;
+        }
+
+        .btn {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+            .btn:hover {
+                background: #45a049;
+            }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 60%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            float: right;
+            cursor: pointer;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+            footer p {
+                margin: 0;
+            }
+    </style>
+</head>
+<body>
+
+    <header>
+        Estrategia de Ciberseguridad para Servidores Críticos
+    </header>
+
+    <div class="container fade-in">
+        <h2>Posibles Amenazas a Servidores Críticos</h2>
+        <div class="threats">
+            <div class="threat">
+                <h3>Amenaza 1: Ataques DDoS</h3>
+                <p>Los ataques de denegación de servicio (DDoS) buscan saturar los servidores con tráfico malicioso, dejándolos inoperativos.</p>
+                <button class="btn" onclick="openModal('modal1')">Ver Controles</button>
+            </div>
+            <div class="threat">
+                <h3>Amenaza 2: Intrusión en la Red</h3>
+                <p>Los atacantes pueden intentar infiltrarse en la red de la organización para robar datos sensibles o alterar la configuración de los servidores.</p>
+                <button class="btn" onclick="openModal('modal2')">Ver Controles</button>
+            </div>
+            <div class="threat">
+                <h3>Amenaza 3: Malware y Ransomware</h3>
+                <p>El malware y ransomware pueden cifrar los datos de los servidores críticos y exigir un rescate para liberarlos.</p>
+                <button class="btn" onclick="openModal('modal3')">Ver Controles</button>
+            </div>
+            <div class="threat">
+                <h3>Amenaza 4: Acceso no autorizado a través de vulnerabilidades</h3>
+                <p>Las vulnerabilidades no parcheadas pueden ser explotadas por los atacantes para acceder sin autorización a los sistemas.</p>
+                <button class="btn" onclick="openModal('modal4')">Ver Controles</button>
+            </div>
+            <!-- Amenaza 5 -->
+            <div class="threat">
+                <h3>Amenaza 5: Phishing</h3>
+                <p>Los atacantes pueden intentar engañar a los usuarios para que revelen información sensible, como credenciales de acceso, a través de correos electrónicos falsos.</p>
+                <button class="btn" onclick="openModal('modal5')">Ver Controles</button>
+            </div>
+
+            <!-- Amenaza 6 -->
+            <div class="threat">
+                <h3>Amenaza 6: Explotación de Vulnerabilidades en Software</h3>
+                <p>Los atacantes explotan vulnerabilidades conocidas en software desactualizado para tomar el control de los servidores.</p>
+                <button class="btn" onclick="openModal('modal6')">Ver Controles</button>
+            </div>
+
+            <!-- Amenaza 7 -->
+            <div class="threat">
+                <h3>Amenaza 7: Suplantación de Identidad (Spoofing)</h3>
+                <p>Los atacantes pueden falsificar direcciones de correo electrónico o direcciones IP para parecerse a fuentes confiables y engañar a los usuarios.</p>
+                <button class="btn" onclick="openModal('modal7')">Ver Controles</button>
+            </div>
+
+            <!-- Amenaza 8 -->
+            <div class="threat">
+                <h3>Amenaza 8: Acceso mediante Contraseñas Débiles</h3>
+                <p>Las contraseñas fáciles de adivinar son una puerta abierta para los atacantes que buscan acceder a los sistemas.</p>
+                <button class="btn" onclick="openModal('modal8')">Ver Controles</button>
+            </div>
+
+            <!-- Amenaza 9 -->
+            <div class="threat">
+                <h3>Amenaza 9: Exfiltración de Datos</h3>
+                <p>Los atacantes roban información sensible de los servidores, como bases de datos de usuarios o propiedad intelectual.</p>
+                <button class="btn" onclick="openModal('modal9')">Ver Controles</button>
+            </div>
+
+            <!-- Amenaza 10 -->
+            <div class="threat">
+                <h3>Amenaza 10: Ransomware como Servicio (RaaS)</h3>
+                <p>Los ciberdelincuentes utilizan plataformas que ofrecen ransomware como servicio, permitiendo que otros atacantes ejecuten estos ataques.</p>
+                <button class="btn" onclick="openModal('modal10')">Ver Controles</button>
+            </div>
+
+            <!-- Amenaza 11 -->
+            <div class="threat">
+                <h3>Amenaza 11: Inyección SQL</h3>
+                <p>El atacante explota vulnerabilidades en las consultas SQL para obtener acceso no autorizado a bases de datos.</p>
+                <button class="btn" onclick="openModal('modal11')">Ver Controles</button>
+            </div>
+
+            <!-- Amenaza 12 -->
+            <div class="threat">
+                <h3>Amenaza 12: Escalada de Privilegios</h3>
+                <p>Los atacantes ganan acceso a una cuenta de usuario con privilegios bajos y luego la elevan para obtener más control sobre el sistema.</p>
+                <button class="btn" onclick="openModal('modal12')">Ver Controles</button>
+            </div>
+
+            <!-- Amenaza 13 -->
+            <div class="threat">
+                <h3>Amenaza 13: Abuso de Confianza Interna</h3>
+                <p>Los empleados o personas de confianza pueden abusar de su acceso para robar o manipular datos sensibles.</p>
+                <button class="btn" onclick="openModal('modal13')">Ver Controles</button>
+            </div>
+
+            <!-- Amenaza 14 -->
+            <div class="threat">
+                <h3>Amenaza 14: Ataques a través de la Cadena de Suministro</h3>
+                <p>Los atacantes pueden infiltrarse en los sistemas a través de vulnerabilidades en los proveedores y socios comerciales.</p>
+                <button class="btn" onclick="openModal('modal14')">Ver Controles</button>
+            </div>
+
+            <!-- Amenaza 15 -->
+            <div class="threat">
+                <h3>Amenaza 15: Exposición de Servicios Internos a Internet</h3>
+                <p>Los servicios internos expuestos a internet pueden ser atacados, lo que permite a los ciberdelincuentes acceder a los sistemas internos.</p>
+                <button class="btn" onclick="openModal('modal15')">Ver Controles</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Controles para Ataques DDoS</h2>
+            <ul>
+                <li>Implementar firewalls avanzados para bloquear tráfico sospechoso.</li>
+                <li>Usar servicios de mitigación de DDoS en la nube.</li>
+                <li>Configurar límites de ancho de banda y tráfico entrante.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Controles para Intrusión en la Red</h2>
+            <ul>
+                <li>Implementar autenticación multifactor (MFA) para acceder a los servidores.</li>
+                <li>Usar herramientas de monitoreo para detectar actividades sospechosas.</li>
+                <li>Realizar auditorías periódicas de seguridad en la red.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>Controles para Malware y Ransomware</h2>
+            <ul>
+                <li>Instalar y mantener actualizado un antivirus confiable en todos los servidores.</li>
+                <li>Realizar copias de seguridad periódicas y almacenarlas de forma segura.</li>
+                <li>Implementar filtrado de contenido y correo electrónico para evitar la entrada de archivos maliciosos.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal4')">&times;</span>
+            <h2>Controles para Acceso no autorizado a través de vulnerabilidades</h2>
+            <ul>
+                <li>Realizar pruebas de penetración periódicas para identificar vulnerabilidades.</li>
+                <li>Aplicar actualizaciones y parches de seguridad de manera oportuna en todos los sistemas y aplicaciones.</li>
+                <li>Implementar políticas de control de acceso y autenticación rigurosas para los usuarios y sistemas.</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Modal 5 -->
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal5')">&times;</span>
+            <h2>Controles para Phishing</h2>
+            <ul>
+                <li>Implementar autenticación multifactor (MFA) para proteger las cuentas de usuario.</li>
+                <li>Educación constante sobre la identificación de correos electrónicos y sitios web fraudulentos.</li>
+                <li>Utilizar filtros de correo electrónico para identificar y bloquear mensajes sospechosos.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 6 -->
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal6')">&times;</span>
+            <h2>Controles para Explotación de Vulnerabilidades en Software</h2>
+            <ul>
+                <li>Realizar actualizaciones y parches regulares en todos los sistemas y software.</li>
+                <li>Implementar herramientas de escaneo de vulnerabilidades para detectar y corregir fallos de seguridad.</li>
+                <li>Seguir buenas prácticas de desarrollo seguro, como la validación de entradas y la sanitización de datos.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 7 -->
+    <div id="modal7" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal7')">&times;</span>
+            <h2>Controles para Suplantación de Identidad (Spoofing)</h2>
+            <ul>
+                <li>Implementar filtros de correo electrónico y técnicas de autenticación de correo (SPF, DKIM, DMARC).</li>
+                <li>Monitorear registros de acceso y detectar patrones inusuales de acceso.</li>
+                <li>Usar autenticación multifactor para agregar una capa adicional de seguridad.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 8 -->
+    <div id="modal8" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal8')">&times;</span>
+            <h2>Controles para Acceso mediante Contraseñas Débiles</h2>
+            <ul>
+                <li>Implementar políticas de contraseñas seguras y cambiar contraseñas periódicamente.</li>
+                <li>Obligar el uso de autenticación multifactor (MFA) para un acceso más seguro.</li>
+                <li>Usar gestores de contraseñas para evitar contraseñas débiles o repetidas.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 9 -->
+    <div id="modal9" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal9')">&times;</span>
+            <h2>Controles para Exfiltración de Datos</h2>
+            <ul>
+                <li>Implementar monitoreo continuo para detectar accesos y transferencias de datos no autorizados.</li>
+                <li>Cifrar los datos sensibles tanto en tránsito como en reposo.</li>
+                <li>Aplicar políticas estrictas de control de acceso para restringir quién puede ver y modificar los datos.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 10 -->
+    <div id="modal10" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal10')">&times;</span>
+            <h2>Controles para Ransomware como Servicio (RaaS)</h2>
+            <ul>
+                <li>Implementar tecnologías de detección y prevención de intrusiones (IDS/IPS).</li>
+                <li>Realizar copias de seguridad periódicas y mantenerlas desconectadas de la red principal.</li>
+                <li>Educar a los usuarios sobre los riesgos de abrir correos electrónicos o archivos sospechosos.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 11 -->
+    <div id="modal11" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal11')">&times;</span>
+            <h2>Controles para Inyección SQL</h2>
+            <ul>
+                <li>Validar y sanear todas las entradas de usuario en las aplicaciones web.</li>
+                <li>Implementar una autenticación fuerte y controlada en las bases de datos.</li>
+                <li>Utilizar procedimientos almacenados y evitar las consultas dinámicas.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 12 -->
+    <div id="modal12" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal12')">&times;</span>
+            <h2>Controles para Escalada de Privilegios</h2>
+            <ul>
+                <li>Aplicar el principio de privilegio mínimo, asegurando que los usuarios solo tengan acceso a lo que necesitan.</li>
+                <li>Realizar auditorías de permisos y accesos con regularidad.</li>
+                <li>Implementar autenticación multifactor para accesos a cuentas privilegiadas.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 13 -->
+    <div id="modal13" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal13')">&times;</span>
+            <h2>Controles para Abuso de Confianza Interna</h2>
+            <ul>
+                <li>Implementar monitoreo de actividad de los empleados con acceso a datos sensibles.</li>
+                <li>Segregar funciones para reducir el riesgo de abuso por parte de los empleados.</li>
+                <li>Realizar auditorías internas para detectar comportamientos sospechosos.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 14 -->
+    <div id="modal14" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal14')">&times;</span>
+            <h2>Controles para Ataques a través de la Cadena de Suministro</h2>
+            <ul>
+                <li>Realizar auditorías de seguridad a los proveedores antes de integrarlos en la cadena de suministro.</li>
+                <li>Utilizar firmas digitales y verificación de integridad para asegurar los productos y servicios proporcionados.</li>
+                <li>Implementar políticas de acceso restringido a los sistemas de la empresa para los proveedores.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 15 -->
+    <div id="modal15" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal15')">&times;</span>
+            <h2>Controles para Exposición de Servicios Internos a Internet</h2>
+            <ul>
+                <li>Revisar y minimizar los servicios expuestos a internet solo a los estrictamente necesarios.</li>
+                <li>Utilizar firewalls y redes privadas virtuales (VPN) para proteger los servicios internos.</li>
+                <li>Implementar sistemas de detección de intrusiones para monitorear accesos no autorizados.</li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Estrategia de Ciberseguridad | Proyecto por Aguilar Alen </p>
+    </footer>
+
+    <script>
+        // Abrir modal
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "flex";
+        }
+
+        // Cerrar modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Cerrar modal si se hace clic fuera del contenido
+        window.onclick = function (event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(event.target.id);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
